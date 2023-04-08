@@ -1,0 +1,52 @@
+[{
+  "roomName": "102教室",
+  "period1": "オープン",
+  "period2": "オープン",
+  "lunch": "オープン",
+  "period3": "オープン",
+  "period4": "プログラミング言語論[天願]",
+  "period5": "オープン",
+  "period6": "オープン",
+  "afterSchool": "オープン"
+},{
+  "roomName": "104教室",
+  "period1": "オープン",
+  "period2": "オープン",
+  "lunch": "オープン",
+  "period3": "オープン",
+  "period4": "オープン",
+  "period5": "オープン",
+  "period6": "オープン",
+  "afterSchool": "オープン"
+},{
+  "roomName": "106教室",
+  "period1": "オープン",
+  "period2": "コンピュータ概論",
+  "lunch": "オープン",
+  "period3": "ウェブデザイン[佐久本]",
+  "period4": "オープン",
+  "period5": "医療統計学[木村]",
+  "period6": "オープン",
+  "afterSchool": "オープン"
+},{
+  "roomName": "MM教室",
+  "period1": "オープン",
+  "period2": "オープン",
+  "lunch": "オープン",
+  "period3": "オープン",
+  "period4": "オープン",
+  "period5": "オープン",
+  "period6": "オープン",
+  "afterSchool": "オープン"
+},{
+  "roomName": "204教室",
+  "period1": "オープン",
+  "period2": "中・上級日本語作文[当銘]",
+  "lunch": "オープン",
+  "period3": "中・上級日本語作文[当銘]",
+  "period4": "オープン",
+  "period5": "オープン",
+  "period6": "オープン",
+  "afterSchool": "オープン"
+}
+]
