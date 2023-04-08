@@ -1,0 +1,126 @@
+<h1 style="text-align: center;padding-top: 10px;">教室新規登録</h1>
+
+<div class="form">
+  <div style="font-size: 20px;padding-bottom: 10px;">1．教室名を登録</div>
+  <mat-form-field>
+    <mat-label>教室名</mat-label>
+    <input matInput placeholder="101教室">
+    <mat-icon matSuffix>meeting_room</mat-icon>
+  </mat-form-field>
+  <br>
+  <div style="font-size: 20px;padding-top: 20px;">2．講義を登録</div>
+  <div style="color:dimgray;padding-bottom: 10px">講義がない場合は登録不要です</div>
+
+  <div>
+    <mat-form-field appearance="fill" style="padding-right: 20px;">
+      <mat-label>時間を選択</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>講義名</mat-label>
+      <input matInput placeholder="プログラミング入門">
+      <mat-icon matSuffix>class</mat-icon>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="addClass(0)" *ngIf="showForms[0] != true">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="showForms[0]">
+    <mat-form-field appearance="fill" style="padding-right: 20px;">
+      <mat-label>時間を選択</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>講義名</mat-label>
+      <input matInput placeholder="プログラミング入門">
+      <mat-icon matSuffix>class</mat-icon>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="addClass(1)" *ngIf="showForms[1] != true">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="showForms[1]">
+    <mat-form-field appearance="fill" style="padding-right: 20px;">
+      <mat-label>時間を選択</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>講義名</mat-label>
+      <input matInput placeholder="プログラミング入門">
+      <mat-icon matSuffix>class</mat-icon>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="addClass(2)"  *ngIf="showForms[2] != true">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="showForms[2]">
+    <mat-form-field appearance="fill" style="padding-right: 20px;">
+      <mat-label>時間を選択</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>講義名</mat-label>
+      <input matInput placeholder="プログラミング入門">
+      <mat-icon matSuffix>class</mat-icon>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="addClass(3)" *ngIf="showForms[3] != true">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="showForms[3]">
+    <mat-form-field appearance="fill" style="padding-right: 20px;">
+      <mat-label>時間を選択</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>講義名</mat-label>
+      <input matInput placeholder="プログラミング入門">
+      <mat-icon matSuffix>class</mat-icon>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="addClass(4)" *ngIf="showForms[4] != true">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="showForms[4]">
+    <mat-form-field appearance="fill" style="padding-right: 20px;">
+      <mat-label>時間を選択</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>講義名</mat-label>
+      <input matInput placeholder="プログラミング入門">
+      <mat-icon matSuffix>class</mat-icon>
+    </mat-form-field>
+  </div>
+  <br>
+  <button mat-raised-button color="accent" class="submit">登録</button>
+  <div>{{ firebaseData.roomName }}</div>
+</div>

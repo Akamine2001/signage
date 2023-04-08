@@ -30,9 +30,14 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "firebase",
+              "@firebase/database"
+            ]
           },
           "configurations": {
             "production": {
@@ -56,7 +61,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -93,12 +104,26 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "meio-classroom-info:build:production",
+            "firebaseProject": "meio-classroom-info",
+            "firebaseHostingSite": "meio-classroom-info"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "054fc42f-a0d7-4aae-8625-71394db3d8fd"
   }
 }

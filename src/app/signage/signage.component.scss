@@ -1,0 +1,47 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.footer{
+  padding: 0;
+}
+
+.timeInfo{
+  text-align: center;
+  font-size: large;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  border-right: 1px solid;
+  border-color: darkgray;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.mat-cell {
+  text-align: center;
+}
+
+.highlight{
+  background-color: #BBDEFB;
+}
+
+@media (max-width: 768px) {
+  td {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+

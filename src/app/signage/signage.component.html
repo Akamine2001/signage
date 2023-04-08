@@ -1,0 +1,66 @@
+<div class="table">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="roomName">
+      <th mat-header-cell *matHeaderCellDef>教室名</th>
+      <td mat-cell *matCellDef="let element">{{ element.roomName }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="period1">
+      <th mat-header-cell *matHeaderCellDef>1限目</th>
+      <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 1}">{{ element.period1 }}</td>
+      <td mat-footer-cell *matFooterCellDef colspan="7" class="footer">
+        <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
+        <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
+        <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
+        <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
+        <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
+        <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
+        <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="period2">
+      <th mat-header-cell *matHeaderCellDef>2限目</th>
+      <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 2}">{{ element.period2 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lunch">
+      <th mat-header-cell *matHeaderCellDef>昼休み</th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': currentColumn === 3}">{{ element.lunch }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period3">
+      <th mat-header-cell *matHeaderCellDef>3限目</th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': currentColumn === 4}">{{ element.period3 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period4">
+      <th mat-header-cell *matHeaderCellDef>4限目</th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': currentColumn === 5}">{{ element.period4 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period5">
+      <th mat-header-cell *matHeaderCellDef>5限目</th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': currentColumn === 6}">{{ element.period5 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period6">
+      <th mat-header-cell *matHeaderCellDef>6限目</th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': currentColumn === 7}">{{ element.period6 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="afterSchool">
+      <th mat-header-cell *matHeaderCellDef>放課後</th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': currentColumn === 8}">{{ element.afterSchool }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="['roomName','period1']"></tr>
+
+  </table>
+
+  <div class="timeInfo">現在時刻は <h1 style="display:inline;">{{currentTime | date:'HH:mm:ss'}}</h1> です。</div>
+  <div class="timeInfo">現在は {{ nowPeriod }}</div>
+</div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "meio-classroom-info": {
+      "hosting": {
+        "meio-classroom-info": [
+          "meio-classroom-info"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "meio-classroom-info"
+  }
+}
