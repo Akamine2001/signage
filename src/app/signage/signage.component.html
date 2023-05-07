@@ -1,5 +1,5 @@
 <div class="table">
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="matDataSource">
     <ng-container matColumnDef="roomName">
       <th mat-header-cell *matHeaderCellDef>教室名</th>
       <td mat-cell *matCellDef="let element">{{ element.roomName }}</td>
@@ -9,7 +9,7 @@
     <ng-container matColumnDef="period1">
       <th mat-header-cell *matHeaderCellDef>1限目</th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 1}">{{ element.period1 }}</td>
-      <td mat-footer-cell *matFooterCellDef colspan="7" class="footer">
+      <td mat-footer-cell *matFooterCellDef colspan="7" class="footer" id="foo">
         <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
         <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
         <mat-progress-bar [value]="getProgress()" class="progressBar"></mat-progress-bar>
@@ -63,4 +63,5 @@
 
   <div class="timeInfo">現在時刻は <h1 style="display:inline;">{{currentTime | date:'HH:mm:ss'}}</h1> です。</div>
   <div class="timeInfo">現在は {{ nowPeriod }}</div>
+
 </div>

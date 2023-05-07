@@ -6,3 +6,41 @@
   font-size: 20px;
   padding: 20px 32px;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f7f6f6;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.mat-cell {
+  text-align: center;
+}
+
+.highlight{
+  background-color: #BBDEFB;
+  border-width: 5px;
+  border-color: #3f51b5;
+}
+
+@media (max-width: 768px) {
+  td {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}

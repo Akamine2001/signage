@@ -1,126 +1,66 @@
-<h1 style="text-align: center;padding-top: 10px;">教室新規登録</h1>
+<h1 style="font-weight: bold; text-align: center;padding-top: 10px;">授業情報編集</h1>
 
 <div class="form">
-  <div style="font-size: 20px;padding-bottom: 10px;">1．教室名を登録</div>
-  <mat-form-field>
-    <mat-label>教室名</mat-label>
-    <input matInput placeholder="101教室">
-    <mat-icon matSuffix>meeting_room</mat-icon>
-  </mat-form-field>
-  <br>
-  <div style="font-size: 20px;padding-top: 20px;">2．講義を登録</div>
-  <div style="color:dimgray;padding-bottom: 10px">講義がない場合は登録不要です</div>
-
+  <div style="font-size: 20px;padding-top:20px;padding-bottom: 10px;">1．編集したいコマを選択</div>
   <div>
-    <mat-form-field appearance="fill" style="padding-right: 20px;">
-      <mat-label>時間を選択</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>講義名</mat-label>
-      <input matInput placeholder="プログラミング入門">
-      <mat-icon matSuffix>class</mat-icon>
-    </mat-form-field>
-
-    <button mat-icon-button (click)="addClass(0)" *ngIf="showForms[0] != true">
-      <mat-icon>add</mat-icon>
-    </button>
+    <mat-button-toggle-group [formControl]="weekToggle" name="weeks" (click)="selectWeek()">
+      <mat-button-toggle value="monday">月曜日</mat-button-toggle>
+      <mat-button-toggle value="tuesday">火曜日</mat-button-toggle>
+      <mat-button-toggle value="wednesday">水曜日</mat-button-toggle>
+      <mat-button-toggle value="thursday">木曜日</mat-button-toggle>
+      <mat-button-toggle value="friday">金曜日</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div>
+    <mat-card style="margin-right: 20px;">
+      <table mat-table [dataSource]="matDataSource">
+        <ng-container matColumnDef="roomName">
+          <th mat-header-cell *matHeaderCellDef>教室名</th>
+          <td mat-cell *matCellDef="let element">{{ element.roomName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="period1">
+          <th mat-header-cell *matHeaderCellDef>1限目</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 1 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period1 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="period2">
+          <th mat-header-cell *matHeaderCellDef>2限目</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 2 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period2 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="lunch">
+          <th mat-header-cell *matHeaderCellDef>lunch</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 3 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.lunch }}</td>
+        </ng-container>
+        <ng-container matColumnDef="period3">
+          <th mat-header-cell *matHeaderCellDef>3限目</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 4 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period3 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="period4">
+          <th mat-header-cell *matHeaderCellDef>4限目</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 5 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period4 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="period5">
+          <th mat-header-cell *matHeaderCellDef>5限目</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 6 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period5 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="period6">
+          <th mat-header-cell *matHeaderCellDef>6限目</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 7 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period6 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="afterSchool">
+          <th mat-header-cell *matHeaderCellDef>放課後</th>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 8 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.afterSchool }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card>
   </div>
 
-  <div *ngIf="showForms[0]">
-    <mat-form-field appearance="fill" style="padding-right: 20px;">
-      <mat-label>時間を選択</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>講義名</mat-label>
-      <input matInput placeholder="プログラミング入門">
-      <mat-icon matSuffix>class</mat-icon>
-    </mat-form-field>
-
-    <button mat-icon-button (click)="addClass(1)" *ngIf="showForms[1] != true">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <div *ngIf="showForms[1]">
-    <mat-form-field appearance="fill" style="padding-right: 20px;">
-      <mat-label>時間を選択</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>講義名</mat-label>
-      <input matInput placeholder="プログラミング入門">
-      <mat-icon matSuffix>class</mat-icon>
-    </mat-form-field>
-
-    <button mat-icon-button (click)="addClass(2)"  *ngIf="showForms[2] != true">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <div *ngIf="showForms[2]">
-    <mat-form-field appearance="fill" style="padding-right: 20px;">
-      <mat-label>時間を選択</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>講義名</mat-label>
-      <input matInput placeholder="プログラミング入門">
-      <mat-icon matSuffix>class</mat-icon>
-    </mat-form-field>
-
-    <button mat-icon-button (click)="addClass(3)" *ngIf="showForms[3] != true">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <div *ngIf="showForms[3]">
-    <mat-form-field appearance="fill" style="padding-right: 20px;">
-      <mat-label>時間を選択</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>講義名</mat-label>
-      <input matInput placeholder="プログラミング入門">
-      <mat-icon matSuffix>class</mat-icon>
-    </mat-form-field>
-
-    <button mat-icon-button (click)="addClass(4)" *ngIf="showForms[4] != true">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <div *ngIf="showForms[4]">
-    <mat-form-field appearance="fill" style="padding-right: 20px;">
-      <mat-label>時間を選択</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.viewValue }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>講義名</mat-label>
-      <input matInput placeholder="プログラミング入門">
-      <mat-icon matSuffix>class</mat-icon>
-    </mat-form-field>
-  </div>
-  <br>
-  <button mat-raised-button color="accent" class="submit">登録</button>
-  <div>{{ firebaseData.roomName }}</div>
+  <div style="font-size: 20px;padding-top:20px;padding-bottom: 10px;">2．講義を登録</div>
+  <mat-form-field>
+    <mat-label>講義名</mat-label>
+    <input [formControl]="input" matInput placeholder="プログラミング入門[天願]">
+    <mat-icon matSuffix>class</mat-icon>
+  </mat-form-field>
+  <button style="margin-left: 30px;" mat-raised-button color="accent" class="submit" (click)="submit()">登録</button>
 </div>

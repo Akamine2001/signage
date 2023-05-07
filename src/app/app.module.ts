@@ -19,7 +19,9 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatTableModule,
     MatProgressBarModule,
@@ -39,6 +42,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     MatInputModule,
     MatAutocompleteModule,
     MatSelectModule,
+    MatButtonToggleModule,
+    MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,

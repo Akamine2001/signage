@@ -1,17 +1,7 @@
 import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface EsppData{
-  roomName: string;
-  period1: string;
-  period2: string;
-  lunch: string;
-  period3: string;
-  period4: string;
-  period5: string;
-  period6: string;
-  afterSchool: string;
-}
+import { DataService,ClassroomData } from '../shared/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signage',
@@ -24,6 +14,10 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
   }
 
   ngAfterContentInit(): void {
+
+  }
+
+  ngAfterViewInit(): void {
     setInterval(() => {
       this.getPeriod();
       //this.updateCurrentColumn();
@@ -31,12 +25,8 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
     }, this.highlightDuraration);
   }
 
-  ngAfterViewInit(): void {
-
-  }
-
-  constructor(){
-    this.dataSource = new MatTableDataSource(this.classRoomInfo);
+  constructor(private dataService: DataService){
+    this.matDataSource = this.dataService.getFsData();
   }
 
   currentColumn = 1; //強調表示する列
@@ -44,24 +34,13 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
   nowPeriod: string ='';
   currentTime: Date = new Date();
 
-  classRoomInfo = require('src/assets/classRoomInfo.json');
-  dataSource: MatTableDataSource<EsppData>;
-  displayedColumns: string[] = [
-    "roomName",
-    "period1",
-    "period2",
-    "lunch",
-    "period3",
-    "period4",
-    "period5",
-    "period6",
-    "afterSchool",
-  ]
+  matDataSource: Observable<ClassroomData[]>;
+  displayedColumns = this.dataService.displayedColumns;
 
   private readonly startHour = 8;
   private readonly startMinute = 45;
-  private readonly endHour = 18;
-  private readonly endMinute = 15;
+  private readonly endHour = 19;
+  private readonly endMinute = 45;
 
   getProgress(): number {
     const now = new Date();
@@ -76,6 +55,8 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
     } else {
       const totalMinutes = (end.getTime() - start.getTime()) / 60000;
       const elapsedMinutes = (now.getTime() - start.getTime()) / 60000;
+      console.log("endTime:"+ end.getHours() +":" + end.getMinutes());
+      console.log("nowTime:"+ now.getHours() +":" + now.getMinutes());
       return (elapsedMinutes / totalMinutes) * 100;
     }
   }
