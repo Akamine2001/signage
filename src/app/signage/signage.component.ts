@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService,ClassroomData } from '../shared/data.service';
 import { Observable } from 'rxjs';
@@ -20,7 +20,6 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
   ngAfterViewInit(): void {
     setInterval(() => {
       this.getPeriod();
-      //this.updateCurrentColumn();
       this.currentTime = new Date();
     }, this.highlightDuraration);
   }
@@ -33,37 +32,20 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
   highlightDuraration = 1000; //更新の頻度(ms)
   nowPeriod: string ='';
   currentTime: Date = new Date();
+  todaysWeek: string = this.dataService.weekDataJp[this.currentTime.getDay()];
 
   matDataSource: Observable<ClassroomData[]>;
   displayedColumns = this.dataService.displayedColumns;
 
-  private readonly startHour = 8;
-  private readonly startMinute = 45;
-  private readonly endHour = 19;
-  private readonly endMinute = 45;
-
-  getProgress(): number {
-    const now = new Date();
-    const start = new Date();
-    start.setHours(this.startHour, this.startMinute, 0, 0);
-    const end = new Date();
-    end.setHours(this.endHour, this.endMinute, 0, 0);
-    if (now < start) {
-      return 0;
-    } else if (now > end) {
-      return 100;
-    } else {
-      const totalMinutes = (end.getTime() - start.getTime()) / 60000;
-      const elapsedMinutes = (now.getTime() - start.getTime()) / 60000;
-      console.log("endTime:"+ end.getHours() +":" + end.getMinutes());
-      console.log("nowTime:"+ now.getHours() +":" + now.getMinutes());
-      return (elapsedMinutes / totalMinutes) * 100;
+  isOpen(cell: string): boolean{
+    if(cell == 'オープン'){
+      return true;
     }
+    return false
   }
 
   getPeriod(){
     let nowMinSec:number = (this.currentTime.getHours() * 100) + (this.currentTime.getMinutes());
-    //console.log(nowMinSec);
     if(nowMinSec < 845){
       this.nowPeriod = '朝';
       this.currentColumn = 0;
@@ -93,9 +75,4 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
         this.currentColumn = 8;
     }
   }
-
-  updateCurrentColumn(){
-    this.currentColumn = this.currentColumn < 9 ? this.currentColumn + 1 : 1;
-  }
-
 }

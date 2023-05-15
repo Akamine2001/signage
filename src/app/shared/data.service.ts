@@ -21,6 +21,7 @@ export class DataService {
   afsCollection: AngularFirestoreCollection<ClassroomData>;
   items: Observable<ClassroomData[]>
   weekData: String[] =  [ "monday", "monday", "tuesday", "wednesday", "thursday", "friday", "friday" ] ;
+  weekDataJp: string[] = [ "月曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "金曜日",];
   roomName: string[] = [ "102", "104", "106", "204", "MM"];
   constructor(private afs: AngularFirestore) {
     this.afsCollection = afs.collection<ClassroomData>(<string>(this.weekData[new Date().getDay()]))
@@ -42,8 +43,8 @@ export class DataService {
     docRef.update({
       [clmn]: cls
     });
-    console.log('col is '+ col +'  doc is '+ doc);
-    console.log('room is '+ clmn +'  class is'+ cls);
+    //console.log('col is '+ col +'  doc is '+ doc);
+    //console.log('room is '+ clmn +'  class is'+ cls);
   }
 
   displayedColumns: string[] = [

@@ -1,3 +1,26 @@
+.list{
+  width: min(100% - 2rem, 700px);
+  height: min(100% - 2rem, 100px);
+  margin-inline: auto;
+  max-height: fit-content;
+}
+
+.card{
+  margin-top: 20px;
+  width: min(100% - 2rem, 1300px);
+  margin-inline: auto;
+}
+
+.timeCard{
+  margin-top: 20px;
+  width: min(100% - 2rem, 300px);
+  margin-inline: auto;
+}
+
+body{
+  background-color: #ffffff;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -15,13 +38,13 @@ table {
 
 th, td {
   padding: 12px 15px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ddd;
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   overflow-wrap: break-word;
-  border-right: 1px solid;
+  //border-right: 1px solid;
   border-color: darkgray;
 }
 
@@ -36,6 +59,16 @@ th {
 
 .highlight{
   background-color: #BBDEFB;
+}
+
+.open-cell{
+  color: #b22222;
+  font-weight: bold;
+}
+
+.QRcode{
+  width: 250px;
+  height: 250px;
 }
 
 @media (max-width: 768px) {
