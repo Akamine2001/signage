@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import {  AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService,ClassroomData } from '../shared/data.service';
 import { Observable } from 'rxjs';
@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
   templateUrl: './signage.component.html',
   styleUrls: ['./signage.component.scss']
 })
-export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
+export class SignageComponent implements OnInit,AfterViewInit,OnDestroy{
   ngOnInit(): void {
-
+  this.weatherData = this.dataService.weatherData;
   }
 
-  ngAfterContentInit(): void {
+  ngOnDestroy(){
 
   }
 
@@ -33,9 +33,9 @@ export class SignageComponent implements OnInit,AfterViewInit,AfterContentInit{
   nowPeriod: string ='';
   currentTime: Date = new Date();
   todaysWeek: string = this.dataService.weekDataJp[this.currentTime.getDay()];
-
   matDataSource: Observable<ClassroomData[]>;
   displayedColumns = this.dataService.displayedColumns;
+  weatherData: string | undefined;
 
   isOpen(cell: string): boolean{
     if(cell == 'オープン'){

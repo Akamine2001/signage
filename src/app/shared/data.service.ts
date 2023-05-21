@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { error } from 'console';
 
 export interface ClassroomData{
   roomName: string;
@@ -17,16 +19,24 @@ export interface ClassroomData{
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class DataService{
   afsCollection: AngularFirestoreCollection<ClassroomData>;
   items: Observable<ClassroomData[]>
   weekData: String[] =  [ "monday", "monday", "tuesday", "wednesday", "thursday", "friday", "friday" ] ;
   weekDataJp: string[] = [ "月曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "金曜日",];
   roomName: string[] = [ "102", "104", "106", "204", "MM"];
-  constructor(private afs: AngularFirestore) {
+  weatherURL: string = 'https://weather.tsukumijima.net/api/forecast/city/471020';
+  weatherData: string | undefined;
+
+  constructor(private afs: AngularFirestore, private http:HttpClient) {
     this.afsCollection = afs.collection<ClassroomData>(<string>(this.weekData[new Date().getDay()]))
     this.items = this.afsCollection.valueChanges();
-   }
+
+    // this.http.get(this.weatherURL).subscribe(data => {
+    //   console.log(JSON.stringify(data));
+    //   this.weatherData = JSON.stringify(data);
+    // });
+  }
 
   getFsData(){
     return this.items;
