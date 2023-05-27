@@ -1,5 +1,6 @@
 import {  Component } from '@angular/core';
 import screenfull from 'screenfull';
+import { AuthService } from './shared/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ import screenfull from 'screenfull';
 export class AppComponent{
   title = 'meio-classroom-info';
   isFullscreen: boolean = false;
+
+  constructor(public auth: AuthService){}
 
   fullscreen(){
     if(this.isFullscreen == false){

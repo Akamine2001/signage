@@ -2,16 +2,19 @@
   <a class="toolbar" routerLink="/">PC教室案内</a>
   <span class="spacer"></span>
 
+  <button mat-icon-button (click)="auth.googleSignin()">
+    <mat-icon>account_box</mat-icon>
+  </button>
   <div *ngIf="isFullscreen; else exit">
     <button mat-icon-button (click)="exitFullscreen()">
       <mat-icon class="fullscreen">fullscreen_exit</mat-icon>
     </button>
   </div>
-  <ng-template #exit>
-    <button mat-icon-button (click)="fullscreen()">
-      <mat-icon class="document.fullscreenElement">fullscreen</mat-icon>
-    </button>
-  </ng-template>
+    <ng-template #exit>
+      <button mat-icon-button (click)="fullscreen()">
+        <mat-icon class="document.fullscreenElement">fullscreen</mat-icon>
+      </button>
+    </ng-template>
   <button mat-icon-button routerLink="/regist">
     <mat-icon class="setting">settings</mat-icon>
   </button>
