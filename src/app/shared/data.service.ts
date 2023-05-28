@@ -31,7 +31,6 @@ export class DataService{
   constructor(private afs: AngularFirestore, private http:HttpClient) {
     this.afsCollection = afs.collection<ClassroomData>(<string>(this.weekData[new Date().getDay()]))
     this.items = this.afsCollection.valueChanges();
-
     // this.http.get(this.weatherURL).subscribe(data => {
     //   console.log(JSON.stringify(data));
     //   this.weatherData = JSON.stringify(data);

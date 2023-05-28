@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
   <a class="toolbar" routerLink="/">PC教室案内</a>
+  <div *ngIf="auth.userName">
+    <a>&emsp;{{ auth.userName | slice:1:-1 }}さん。こんにちは！</a>
+  </div>
   <span class="spacer"></span>
 
   <button mat-icon-button (click)="auth.googleSignin()">

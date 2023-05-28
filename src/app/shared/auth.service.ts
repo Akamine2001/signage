@@ -11,6 +11,7 @@ import firebase from 'firebase/compat/app';
 })
 export class AuthService {
   user$: Observable<User | null | undefined>;
+  userName: string | undefined;
   constructor(
     private angularFireAuth: AngularFireAuth,
     private angularFireStore: AngularFirestore,
@@ -32,7 +33,8 @@ export class AuthService {
   async googleSignin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credential = await this.angularFireAuth.signInWithPopup(provider) as any;
-    console.log('log!');
+    console.log('login user :' + JSON.stringify(credential.user.displayName));
+    this.userName = JSON.stringify(credential.user.displayName);
     this.router.navigate(['/regist']);
     return this.updateUserData(credential.user);
   }
