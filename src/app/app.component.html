@@ -5,9 +5,9 @@
   </div>
   <span class="spacer"></span>
 
-  <button mat-icon-button (click)="auth.googleSignin()">
+  <!-- <button mat-icon-button (click)="auth.googleSignin()">
     <mat-icon>account_box</mat-icon>
-  </button>
+  </button> -->
   <div *ngIf="isFullscreen; else exit">
     <button mat-icon-button (click)="exitFullscreen()">
       <mat-icon class="fullscreen">fullscreen_exit</mat-icon>
@@ -18,7 +18,8 @@
         <mat-icon class="document.fullscreenElement">fullscreen</mat-icon>
       </button>
     </ng-template>
-  <button mat-icon-button routerLink="/regist">
+  <!-- <button mat-icon-button routerLink="/regist"> -->
+  <button mat-icon-button (click)="auth.googleSignin()">
     <mat-icon class="setting">settings</mat-icon>
   </button>
 </mat-toolbar>

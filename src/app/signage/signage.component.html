@@ -7,8 +7,7 @@
     </ng-container>
 
     <ng-container matColumnDef="period1">
-      <th mat-header-cell *matHeaderCellDef>1限目</th>
-      <!-- <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 1, 'open-cell': isOpen(element.period1)}"> -->
+      <th mat-header-cell *matHeaderCellDef>1限目 <span class="timeZone">08:45~10:15</span></th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 1}">
         <ng-container *ngIf="isOpen(element.period1)">
           <mat-icon class="check">check_circle</mat-icon>
@@ -20,7 +19,7 @@
     </ng-container>
 
     <ng-container matColumnDef="period2">
-      <th mat-header-cell *matHeaderCellDef>2限目</th>
+      <th mat-header-cell *matHeaderCellDef>2限目 <span class="timeZone">10:30~12:00</span></th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 2}">
         <ng-container *ngIf="isOpen(element.period2)">
           <mat-icon class="check">check_circle</mat-icon>
@@ -32,7 +31,7 @@
     </ng-container>
 
     <ng-container matColumnDef="lunch">
-      <th mat-header-cell *matHeaderCellDef>昼休み</th>
+      <th mat-header-cell *matHeaderCellDef>昼休み <span class="timeZone">12:00~13:00</span></th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 3}">
         <ng-container *ngIf="isOpen(element.lunch)">
           <mat-icon class="check">check_circle</mat-icon>
@@ -44,7 +43,7 @@
     </ng-container>
 
     <ng-container matColumnDef="period3">
-      <th mat-header-cell *matHeaderCellDef>3限目</th>
+      <th mat-header-cell *matHeaderCellDef>3限目 <span class="timeZone">13:00~14:30</span></th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 4}">
         <ng-container *ngIf="isOpen(element.period3)">
           <mat-icon class="check">check_circle</mat-icon>
@@ -56,7 +55,7 @@
     </ng-container>
 
     <ng-container matColumnDef="period4">
-      <th mat-header-cell *matHeaderCellDef>4限目</th>
+      <th mat-header-cell *matHeaderCellDef>4限目 <span class="timeZone">14:45~16:15</span></th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 5}">
         <ng-container *ngIf="isOpen(element.period4)">
           <mat-icon class="check">check_circle</mat-icon>
@@ -68,7 +67,7 @@
     </ng-container>
 
     <ng-container matColumnDef="period5">
-      <th mat-header-cell *matHeaderCellDef>5限目</th>
+      <th mat-header-cell *matHeaderCellDef>5限目 <span class="timeZone">16:30~18:00</span></th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 6}">
         <ng-container *ngIf="isOpen(element.period5)">
           <mat-icon class="check">check_circle</mat-icon>
@@ -80,7 +79,7 @@
     </ng-container>
 
     <ng-container matColumnDef="period6">
-      <th mat-header-cell *matHeaderCellDef>6限目</th>
+      <th mat-header-cell *matHeaderCellDef>6限目 <span class="timeZone">18:15~20:00</span></th>
       <td mat-cell *matCellDef="let element"  [ngClass]="{'highlight': currentColumn === 7}">
         <ng-container *ngIf="isOpen(element.period6)">
           <mat-icon class="check">check_circle</mat-icon>
@@ -107,7 +106,11 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   </div>
+  <div class="footer">
+    <mat-icon class="footerIcon">check_circle</mat-icon>は空き教室です
+  </div>
 </mat-card>
+
 
   <mat-card class="timeCard">
     <mat-card-header>

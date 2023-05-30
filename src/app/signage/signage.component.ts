@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class SignageComponent implements OnInit,AfterViewInit,OnDestroy{
   ngOnInit(): void {
-  this.weatherData = this.dataService.weatherData;
+  //this.weatherData = this.dataService.weatherData;
   }
 
   ngOnDestroy(){

@@ -38,7 +38,11 @@ export class RegistComponent implements OnInit{
 
   submit(){
     if(this.weekToggle.value && this.input){
-      this.dataService.editData(this.weekToggle.value, this.selectedRoomName, this.selectedCalumn, <string>this.input.value);
+      if(this.input.value == ''){
+        this.dataService.editData(this.weekToggle.value, this.selectedRoomName, this.selectedCalumn, 'オープン');
+      }else{
+        this.dataService.editData(this.weekToggle.value, this.selectedRoomName, this.selectedCalumn, <string>this.input.value);
+      }
     }else{
       console.log('submit error');
     }
