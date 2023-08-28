@@ -1,0 +1,49 @@
+.card{
+  margin-top: 20px;
+  width: min(100% - 2rem, 1700px);
+  margin-inline: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th, td {
+  word-break: keep-all;
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  border-color: darkgray;
+  font-size: larger;
+  height: 90px;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.mat-cell{
+  text-align: center;
+  font-size: 50px;
+}
+
+.thumbnail {
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+}
+
+.registButton {
+  margin-top: 20px;
+  margin-left: auto;
+  display: flex;
+  margin-right: 30px;
+  padding: 30px;
+  font-size: 18px;
+}

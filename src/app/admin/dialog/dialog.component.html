@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>ユーザー新規登録</h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="ユーザー名" [(ngModel)]="username">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="メールアドレス" [(ngModel)]="email">
+    <div class="discription">※必須項目</div>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="onSaveClick()">登録</button>
+  <button mat-button (click)="onNoClick()">キャンセル</button>
+</div>

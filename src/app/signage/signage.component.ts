@@ -2,6 +2,7 @@ import {  AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService,ClassroomData } from '../shared/data.service';
 import { Observable } from 'rxjs';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-signage',
@@ -10,11 +11,9 @@ import { Observable } from 'rxjs';
 })
 export class SignageComponent implements OnInit,AfterViewInit,OnDestroy{
   ngOnInit(): void {
-  //this.weatherData = this.dataService.weatherData;
   }
 
   ngOnDestroy(){
-
   }
 
   ngAfterViewInit(): void {
@@ -24,12 +23,12 @@ export class SignageComponent implements OnInit,AfterViewInit,OnDestroy{
     }, this.highlightDuraration);
   }
 
-  constructor(private dataService: DataService){
+  constructor(private dataService: DataService, private auth: AuthService){
     this.matDataSource = this.dataService.getFsData();
   }
 
   currentColumn = 1; //強調表示する列
-  highlightDuraration = 1000; //更新の頻度(ms)
+  highlightDuraration = 5000; //更新の頻度(ms)
   nowPeriod: string ='';
   currentTime: Date = new Date();
   todaysWeek: string = this.dataService.weekDataJp[this.currentTime.getDay()];

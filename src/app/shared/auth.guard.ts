@@ -10,22 +10,16 @@ import { tap, map, take } from 'rxjs/operators';
 export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router){}
 
-  // canActivate(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  //   return true;
-  // }
-  canActivate(next: any, state: any): Observable<boolean> {
-    return this.auth.user$.pipe(
-      take(1),
-      map(user => !!user),
-      tap(loggedIn => {
-        if (!loggedIn) {
-          console.log('access denied!!!!!');
-          this.router.navigate(['/signage']);
-        }
-      })
-    )
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      if(!this.auth.isLoggedIn){
+        console.log('not Active!');
+        this.router.navigate(['../']);
+        return false;
+      }else{
+        return this.auth.isLoggedIn;
+      }
   }
 
 }

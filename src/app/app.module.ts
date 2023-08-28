@@ -22,14 +22,20 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin/admin.component';
+import { DialogComponent } from './admin/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
     SignageComponent,
-    RegistComponent
+    RegistComponent,
+    AdminComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +44,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     MatToolbarModule,
     MatTableModule,
     MatProgressBarModule,
     MatIconModule,
+    MatMenuModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -50,6 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonToggleModule,
     MatCardModule,
     MatGridListModule,
+    MatDialogModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
