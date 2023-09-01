@@ -1,9 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Observable, map, of } from 'rxjs';
+import { Observable, Subscription, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { error } from 'console';
-import { User } from './user';
+import { User, preUser } from './user';
 import { promises } from 'dns';
 
 export interface ClassroomData{
@@ -38,12 +38,16 @@ export class DataService{
   mails: string[] = [];
   names: string[] = [];
   userDatas: User[];
+  preUserDatas: preUser[] = [];
+
+  //private preUserDatasSub: Subscription;
 
   constructor(private afs: AngularFirestore, private http:HttpClient) {
     this.afsCollection = afs.collection<ClassroomData>(<string>(this.weekData[new Date().getDay()]))
     this.items = this.afsCollection.valueChanges();
     this.userDatas = [];
     this.getAllUsersDatas();
+    this.getPreRegistUser();
     // this.http.get(this.weatherURL).subscribe(data => {
     //   console.log(JSON.stringify(data));
     //   this.weatherData = JSON.stringify(data);
@@ -51,19 +55,25 @@ export class DataService{
   }
 
   getAllUsersDatas(){
-    //this.userDatas = [];
     const userRef = this.afs.collection<User>('users').get().subscribe(snapshot => {
       snapshot.forEach(doc => {
         if(this.userDatas){
         this.userDatas?.push(doc.data());
         }
-        //console.log('userData[] :'+ Array.from(this.userDatas));
       });
     }, error => {
       console.log('Error fetching users:', error);
     }
     );
-    console.log('userData[] :'+ Array.from(this.userDatas));
+  }
+
+  getPreRegistUser(){
+    const ref = this.afs.collection<preUser>('preRegist');
+    ref.get().subscribe(datas => {
+      datas.forEach(doc => {
+        this.preUserDatas.push(doc.data());
+      });
+    })
   }
 
   getFsData(){

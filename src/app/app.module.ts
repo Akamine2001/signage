@@ -29,13 +29,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin/admin.component';
 import { DialogComponent } from './admin/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DelConfirmDialogComponent } from './admin/del-confirm-dialog/del-confirm-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     SignageComponent,
     RegistComponent,
     AdminComponent,
-    DialogComponent
+    DialogComponent,
+    DelConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

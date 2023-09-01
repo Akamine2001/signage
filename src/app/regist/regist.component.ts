@@ -32,7 +32,7 @@ export class RegistComponent implements OnInit{
   }
 
   selectWeek(){
-    let d = this.dataService.getOtherDayData(<string>this.weekToggle.value);
+    const d = this.dataService.getOtherDayData(<string>this.weekToggle.value);
     this.matDataSource = d;
   }
 

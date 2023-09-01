@@ -4,3 +4,8 @@ export interface User {
   photoURL?: string;
   displayName: string;
 }
+
+export interface preUser {
+  email: string;
+  name?: string;
+}

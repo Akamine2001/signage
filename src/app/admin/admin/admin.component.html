@@ -9,6 +9,7 @@
   {{ this.userMails }}
   {{ this.userPhotoURL }}
 </h1> -->
+<p class="title">ユーザ一覧</p>
 <mat-card class="card">
   <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -20,26 +21,52 @@
         </div>
       </td>
     </ng-container>
-    <!-- Display Column: Display Name -->
     <ng-container matColumnDef="displayName">
       <th mat-header-cell *matHeaderCellDef> ユーザー名 </th>
       <td mat-cell *matCellDef="let element"> {{ element.displayName }} </td>
     </ng-container>
-
-    <!-- Display Column: Email -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> メールアドレス </th>
       <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
     </ng-container>
-
-
-
-    <!-- Define columns -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let rowIndex = index">
+        <button mat-icon-button (click)="openDelDialog(rowIndex, true)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   </div>
 </mat-card>
 
+<p class="title">仮登録のユーザー</p>
+<mat-card class="card">
+  <table mat-table [dataSource]="dataSourcePreUser" class="mat-elevation-z8">
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>メールアドレス</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>ユーザー名</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let rowIndex = index">
+        <button mat-icon-button (click)="openDelDialog(rowIndex, false)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsPreUser"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsPreUser;"></tr>
+  </table>
+</mat-card>
 <button mat-raised-button color="primary" class="registButton" (click)="openDialog()">ユーザーを追加</button>
 
