@@ -20,35 +20,91 @@
         </ng-container>
         <ng-container matColumnDef="period1">
           <th mat-header-cell *matHeaderCellDef>1限目</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 1 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period1 }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 1 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.period1)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.period1) === false" (click)="onClick($event, row)">
+              {{ element.period1 }}
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="period2">
           <th mat-header-cell *matHeaderCellDef>2限目</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 2 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period2 }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 2 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.period2)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.period2) === false">
+              {{ element.period2 }}
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="lunch">
           <th mat-header-cell *matHeaderCellDef>lunch</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 3 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.lunch }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 3 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.lunch)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.lunch) === false">
+              {{ element.lunch }}
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="period3">
           <th mat-header-cell *matHeaderCellDef>3限目</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 4 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period3 }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 4 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.period3)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.period3) === false">
+              {{ element.period3 }}
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="period4">
           <th mat-header-cell *matHeaderCellDef>4限目</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 5 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period4 }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 5 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.period4)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.period4) === false">
+              {{ element.period4 }}
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="period5">
           <th mat-header-cell *matHeaderCellDef>5限目</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 6 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period5 }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 6 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.period5)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.period5) === false">
+              {{ element.period5 }}
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="period6">
           <th mat-header-cell *matHeaderCellDef>6限目</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 7 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.period6 }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 7 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.period6)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.period6) === false">
+              {{ element.period6 }}
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="afterSchool">
           <th mat-header-cell *matHeaderCellDef>放課後</th>
-          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 8 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">{{ element.afterSchool }}</td>
+          <td mat-cell [ngClass]="{'highlight': row === rowIndex && 8 === columnIndex}" *matCellDef="let element; let row = index" (click)="onClick($event, row)">
+            <ng-container *ngIf="isOpen(element.afterSchool)">
+              <mat-icon class="check">check_circle</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="isOpen(element.afterSchool) === false">
+              {{ element.afterSchool }}
+            </ng-container>
+          </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

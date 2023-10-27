@@ -36,6 +36,13 @@ export class RegistComponent implements OnInit{
     this.matDataSource = d;
   }
 
+  isOpen(cell: string): boolean{
+    if(cell == 'オープン'){
+      return true;
+    }
+    return false
+  }
+
   submit(){
     if(this.weekToggle.value && this.input){
       if(this.input.value == ''){

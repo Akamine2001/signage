@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: SignageComponent,
+    pathMatch: 'full'
   },{
     path: 'regist',
     component: RegistComponent,
